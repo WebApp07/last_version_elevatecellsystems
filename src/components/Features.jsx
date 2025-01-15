@@ -117,13 +117,8 @@ const Features = () => (
 
       <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]">
         <BentoCard
-          src="videos/feature-1.mp4"
-          title={
-            <>
-              elevate<b>cell</b>system
-            </>
-          }
-          description="Ideal for elevators areas of rescue two-way communication emergency and pool phones Priority cellular acces monitored phone line and robust hardware bundled into one Provides a secure direct connection over an LTE cellular network to a UL Listed Central Station."
+          src="videos/feature-2.mp4"
+          description="Supporting All Your POTS Replacement Needs."
           isComingSoon
         />
       </BentoTilt>
@@ -131,24 +126,24 @@ const Features = () => (
       <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
         <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
           <BentoCard
-            src="videos/feature-2.mp4"
-            description="Supporting All Your POTS Replacement Needs."
+            src="videos/feature-1.mp4"
+            description="Ideal for elevators areas of rescue two-way communication emergency and pool phones Priority cellular acces monitored phone line and robust hardware bundled into one Provides a secure direct connection over an LTE cellular network to a UL Listed Central Station."
             isComingSoon
           />
         </BentoTilt>
 
         <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2 opacity-50 hover:opacity-100 transition duration-300">
           <BentoCard
-            src="videos/feature-3.mp4"
-            description="Revolutionary Features to Elevate Your Experience."
+            src="videos/feature-4.mp4"
+            description="Cellular Battery Backup Extended Life of Existing Assets Nationwide Coverage Improved Reliability Mass Management of Devices Network Visibility & Reporting"
             isComingSoon
           />
         </BentoTilt>
 
-        <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
+        <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0 hover:opacity-100 transition-opacity duration-300 opacity-50">
           <BentoCard
-            src="videos/feature-4.mp4"
-            description="Cellular Battery Backup Extended Life of Existing Assets Nationwide Coverage Improved Reliability Mass Management of Devices Network Visibility & Reporting"
+            src="videos/feature-3.mp4"
+            description="Revolutionary Features to Elevate Your Experience."
             isComingSoon
           />
         </BentoTilt>
