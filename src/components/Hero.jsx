@@ -141,7 +141,7 @@ const Hero = () => {
         </div>
 
         <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75">
-          E<b>M</b>ERGENCY PHONE
+          E<b>M</b>ERGENCY
         </h1>
 
         <div className="absolute left-0 top-0 z-40 size-full">
@@ -151,10 +151,8 @@ const Hero = () => {
             </h1>
 
             <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
-              Voice Link and AT&T FirstNet® Priority Cellular offer a standard
-              voice telephone line replacement service
-              <br /> for emergency communications for new and legacy life safety
-              equipment.
+              Voice Link and AT&T FirstNet® Priority Cellular <br /> offer a
+              standard voice telephone line replacement service
             </p>
 
             <Button
