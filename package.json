@@ -12,7 +12,9 @@
   "dependencies": {
     "@gsap/react": "^2.1.1",
     "@headlessui/react": "^2.2.0",
+    "@splidejs/react-splide": "^0.7.12",
     "clsx": "^2.1.1",
+    "framer-motion": "^11.18.0",
     "gsap": "^3.12.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

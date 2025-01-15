@@ -1,10 +1,7 @@
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import React from "react";
+import { motion } from "framer-motion";
+import { FaStar } from "react-icons/fa";
 import AnimatedTitle from "./AnimatedTitle";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const testimonialData = [
   {
@@ -12,185 +9,82 @@ const testimonialData = [
     name: "Sarah Johnson",
     position: "Marketing Director",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
-    testimonial:
-      "Working with this team has transformed our business approach completely. Their innovative solutions have helped us achieve unprecedented growth.",
+    rating: 5,
+    text: "Working with this team has been an absolute game-changer for our business. Their innovative solutions and dedication to excellence have helped us achieve remarkable results.",
   },
   {
     id: 2,
     name: "Michael Chen",
     position: "Tech Lead",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
-    testimonial:
-      "The level of professionalism and technical expertise demonstrated by the team is exceptional. They delivered beyond our expectations.",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
+    rating: 5,
+    text: "The level of professionalism and expertise demonstrated by this company is outstanding. They've consistently delivered beyond our expectations.",
   },
   {
     id: 3,
-    name: "Emma Davis",
+    name: "Emily Rodriguez",
     position: "Product Manager",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
-    testimonial:
-      "Their attention to detail and commitment to quality is remarkable. We've seen a significant improvement in our product metrics.",
-  },
-  {
-    id: 4,
-    name: "James Wilson",
-    position: "CEO",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
-    testimonial:
-      "Outstanding service and remarkable results. They've become an invaluable partner in our growth journey.",
+    rating: 5,
+    text: "Their attention to detail and customer-focused approach sets them apart. It's rare to find a partner who truly understands your vision and helps bring it to life.",
   },
 ];
 
-const Testimonials = () => {
-  const testimonialRef = useRef(null);
-  const scrollRef = useRef(null);
-  const [isPaused, setIsPaused] = React.useState(false);
-  const [currentIndex, setCurrentIndex] = React.useState(0);
-
-  useEffect(() => {
-    const testimonials = testimonialRef.current.children;
-
-    gsap.set(testimonials, {
-      opacity: 0,
-      y: 50,
-    });
-
-    gsap.to(testimonials, {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      stagger: 0.3,
-      scrollTrigger: {
-        trigger: testimonialRef.current,
-        start: "top center",
-        end: "bottom center",
-        toggleActions: "play none none reverse",
-      },
-    });
-
-    const autoScroll = gsap.to(scrollRef.current, {
-      x: `-${(testimonials.length - 1) * 100}%`,
-      duration: testimonials.length * 4,
-      ease: "none",
-      repeat: -1,
-    });
-
-    return () => {
-      autoScroll.kill();
-    };
-  }, []);
-
-  const handlePrev = () => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? testimonialData.length - 1 : prev - 1
-    );
-    gsap.to(scrollRef.current, {
-      x: `-${currentIndex * 100}%`,
-      duration: 0.5,
-    });
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prev) =>
-      prev === testimonialData.length - 1 ? 0 : prev + 1
-    );
-    gsap.to(scrollRef.current, {
-      x: `-${currentIndex * 100}%`,
-      duration: 0.5,
-    });
-  };
-
+const TestimonialItem = ({ name, position, image, rating, text }) => {
   return (
-    <div className="relative w-full py-16 bg-gradient-to-r from-gray-50 to-gray-100 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <AnimatedTitle
-            title="What Our <b>C</b>lients Say"
-            containerClass="mt-5 !text-black text-center"
-          />
-
-          <p className="mt-4 text-lg text-gray-500 py-8">
-            Discover why clients love working with us
-          </p>
-        </div>
-
-        <div
-          className="relative"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          <div className="overflow-hidden">
-            <div
-              ref={scrollRef}
-              className="flex transition-transform duration-500"
-            >
-              <div ref={testimonialRef} className="flex flex-nowrap">
-                {testimonialData.map((testimonial) => (
-                  <div
-                    key={testimonial.id}
-                    className="w-full flex-shrink-0 px-4"
-                  >
-                    <div className="bg-white rounded-lg shadow-xl p-8 mx-2 h-full">
-                      <div className="flex items-center mb-6">
-                        <img
-                          src={testimonial.image}
-                          alt={testimonial.name}
-                          className="w-16 h-16 rounded-full object-cover"
-                        />
-                        <div className="ml-4">
-                          <h3 className="text-xl font-semibold text-gray-900">
-                            {testimonial.name}
-                          </h3>
-                          <p className="text-gray-600">
-                            {testimonial.position}
-                          </p>
-                        </div>
-                      </div>
-                      <p className="text-gray-700 text-lg leading-relaxed">
-                        {testimonial.testimonial}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <button
-            onClick={handlePrev}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200"
-          >
-            <FaChevronLeft className="w-6 h-6 text-gray-600" />
-          </button>
-
-          <button
-            onClick={handleNext}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-100 transition-colors duration-200"
-          >
-            <FaChevronRight className="w-6 h-6 text-gray-600" />
-          </button>
-
-          <div className="flex justify-center mt-8">
-            {testimonialData.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  setCurrentIndex(index);
-                  gsap.to(scrollRef.current, {
-                    x: `-${index * 100}%`,
-                    duration: 0.5,
-                  });
-                }}
-                className={`w-3 h-3 mx-1 rounded-full ${
-                  currentIndex === index ? "bg-blue-600" : "bg-gray-300"
-                }`}
-              />
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      whileHover={{ scale: 1.02 }}
+      className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+    >
+      <div className="flex items-center mb-4">
+        <img
+          src={image}
+          alt={name}
+          className="w-16 h-16 rounded-full object-cover mr-4"
+          onError={(e) => {
+            e.target.src =
+              "https://images.unsplash.com/photo-1511367461989-f85a21fda167";
+          }}
+        />
+        <div>
+          <h3 className="font-semibold text-lg text-gray-800">{name}</h3>
+          <p className="text-gray-600 text-sm">{position}</p>
+          <div className="flex mt-1">
+            {[...Array(rating)].map((_, index) => (
+              <FaStar key={index} className="text-yellow-400 w-4 h-4" />
             ))}
           </div>
+        </div>
+      </div>
+      <p className="text-gray-700 leading-relaxed">{text}</p>
+    </motion.div>
+  );
+};
+
+const TestimonialsList = () => {
+  return (
+    <div className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-12">
+          <AnimatedTitle
+            title="What Our Customers <b>Say</b>"
+            containerClass="mt-5 pointer-events-none mix-blend-difference relative z-10"
+          />
+          <p className="mt-4 text-lg text-gray-600">
+            Discover why businesses trust us for their success
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {testimonialData.map((testimonial) => (
+            <TestimonialItem key={testimonial.id} {...testimonial} />
+          ))}
         </div>
       </div>
     </div>
   );
 };
 
-export default Testimonials;
+export default TestimonialsList;
