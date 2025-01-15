@@ -1,89 +1,130 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
-import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import AnimatedTitle from "./AnimatedTitle";
+import desktop from "../assets/desktop.svg";
+import mobile from "../assets/mobile.svg";
+import box from "../assets/box-desktop.svg";
+import womandk from "../assets/woman-desktop.svg";
+import womanmb from "../assets/woman-mobile.svg";
+import { IoIosArrowDown } from "react-icons/io";
 
 const faqData = [
   {
-    question: "How do I create an account?",
+    key: 1,
+    question: "How many team members can I invite?",
     answer:
-      'To create an account, click on the "Sign Up" button in the top right corner of our website. Fill in your details including email, password, and personal information. Once submitted, you\'ll receive a confirmation email to activate your account.',
+      "You can invite up to 2 additional users on the Free plan. There is no limit on team members for the Premium plan.",
   },
   {
-    question: "What payment methods do you accept?",
+    key: 2,
+    question: "What is the maximum file upload size?",
     answer:
-      "We accept various payment methods including credit/debit cards (Visa, MasterCard, American Express), PayPal, and bank transfers. All payments are processed securely through our encrypted payment gateway.",
+      "No more than 2GB. All files in your account must fit your allotted storage space.",
   },
   {
-    question: "How long does shipping take?",
+    key: 3,
+    question: "How do I reset my password?",
     answer:
-      "Shipping times vary depending on your location. Domestic orders typically arrive within 3-5 business days, while international shipping can take 7-14 business days. You'll receive a tracking number once your order is dispatched.",
+      "Click “Forgot password” from the login page or “Change password” from your profile page. A reset link will be emailed to you.",
   },
   {
-    question: "What is your return policy?",
+    key: 4,
+    question: "Can I cancel my subscription?",
     answer:
-      "We offer a 30-day return policy for all unused items in their original packaging. To initiate a return, please contact our customer service team with your order number. Return shipping costs may apply unless the item is defective.",
+      "Yes! Send us a message and we`ll process your request no questions asked.",
   },
   {
-    question: "How can I contact customer support?",
+    key: 5,
+    question: "Do you provide additional support?",
     answer:
-      "Our customer support team is available 24/7 through multiple channels. You can reach us via email at support@example.com, through our live chat feature, or by calling our toll-free number 1-800-123-4567.",
+      "Chat and email support is available 24/7. Phone lines are open during normal business hours.",
   },
 ];
 
-const FAQItem = ({ question, answer, isOpen, onClick }) => {
+const FaqItem = ({ question, answer, isActive, onClick }) => {
   return (
-    <div className="border-b border-gray-200 py-4">
-      <button
-        className="flex w-full justify-between items-center focus:outline-none"
-        onClick={onClick}
-        aria-expanded={isOpen}
-      >
-        <h3 className="text-lg font-semibold text-gray-800">{question}</h3>
-        <span className="ml-4 flex-shrink-0">
-          {isOpen ? (
-            <FiChevronUp className="h-6 w-6 text-indigo-500" />
-          ) : (
-            <FiChevronDown className="h-6 w-6 text-gray-400" />
-          )}
-        </span>
-      </button>
+    <article className="mb-4">
       <div
-        className={`mt-2 transition-all duration-300 ease-in-out overflow-hidden ${
-          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        }`}
+        onClick={onClick}
+        className="flex justify-between items-center cursor-pointer rounded-md"
       >
-        <p className="text-gray-600 leading-relaxed">{answer}</p>
+        <div
+          className={
+            isActive
+              ? "font-bold text-[#1d1e35] hover:text-[#f47c57]"
+              : "text-[#4a4b5e] hover:text-[#f47c57]"
+          }
+        >
+          <h3 className="text-base">{question}</h3>
+        </div>
+        <div className={isActive ? "transform rotate-180 ml-2" : "ml-2"}>
+          <IoIosArrowDown className="text-[#f47c57]" />
+        </div>
       </div>
-    </div>
+      {isActive && (
+        <div className="mt-2 text-[#787887]">
+          <p className="text-sm">{answer}</p>
+        </div>
+      )}
+      <hr className="text-[#e7e7e9] my-3" />
+    </article>
   );
 };
 
-const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState(null);
+const Faq = () => {
+  const [activeIndex, setActiveIndex] = useState(2);
 
-  const handleToggle = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
+  const handleItemClick = (index) => {
+    setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-12">
-      <AnimatedTitle
-        title="Frequently Asked Questions"
-        containerClass="mt-5 !text-black text-center mb-12 text-gray-800"
-      />
-      <div className="bg-white rounded-lg shadow-lg p-6 md:p-8">
-        {faqData.map((faq, index) => (
-          <FAQItem
-            key={index}
-            question={faq.question}
-            answer={faq.answer}
-            isOpen={openIndex === index}
-            onClick={() => handleToggle(index)}
-          />
-        ))}
+    <section className="h-screen grid place-content-center bg-gradient-to-b  from-[#af67e9] to-[#6565e7]">
+      <div className="bg-[#f5f2f2] rounded-2xl max-w-4xl relative m-4 ">
+        <img
+          src={box}
+          alt=""
+          className="hidden md:block absolute top-36 -left-20 z-10 animate-bounce ease-in-out"
+        />
+        <img
+          src={womanmb}
+          alt=""
+          className="md:hidden absolute left-[60px] -top-28 w-60"
+        />
+        <div className="flex justify-between items-center flex-col md:flex-row overflow-hidden ">
+          <div className="relative md:w-1/2">
+            <img
+              src={desktop}
+              alt=""
+              className="hidden md:block absolute -top-16 -left-10"
+            />
+            <img src={mobile} alt="" className="block md:hidden" />
+            <img
+              src={womandk}
+              alt=""
+              className="hidden md:block relative bottom-1 -left-8"
+            />
+          </div>
+
+          <div className="p-4 md:p-12 max-w-sm md:max-w-full md:w-1/2 md:h-[65vh] flex justify-center flex-col items-center md:grid md:place-content-center ">
+            <h1 className="text-4xl font-bold font-mono mb-2 md:mb-4 lg:text-left md:text-left text-center ">
+              FAQ
+            </h1>
+            <div className="max-w-2xl md:mt-4">
+              {faqData.map((faq) => (
+                <FaqItem
+                  key={faq.key}
+                  question={faq.question}
+                  answer={faq.answer}
+                  isActive={activeIndex === faq.key}
+                  onClick={() => handleItemClick(faq.key)}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default FAQ;
+export default Faq;
