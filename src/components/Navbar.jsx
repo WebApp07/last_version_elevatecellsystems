@@ -74,7 +74,7 @@ const NavBar = () => {
             <img
               src="/img/logo.png"
               alt="logo"
-              className="w-30 h-30 object-cover"
+              className="w-25 h-25 object-cover"
             />
 
             <Button
