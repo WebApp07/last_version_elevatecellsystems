@@ -120,7 +120,8 @@ const Features = () => (
           src="videos/feature-2.mp4"
           description="Supporting All Your POTS Replacement Needs."
           isComingSoon
-        />
+        />{" "}
+        b
       </BentoTilt>
 
       <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
