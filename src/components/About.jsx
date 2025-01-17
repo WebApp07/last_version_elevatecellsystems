@@ -57,7 +57,7 @@ const About = () => {
           <video
             className="absolute left-0 top-0 size-full object-cover"
             autoPlay
-            muted
+            controls
             loop
           >
             <source className="opacity-100" src="videos/feature-4.mp4" />
