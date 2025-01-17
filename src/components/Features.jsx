@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { TiLocationArrow } from "react-icons/ti";
+import IconDisplay from "./ToolTips";
 
 export const BentoTilt = ({ children, className = "" }) => {
   const [transformStyle, setTransformStyle] = useState("");
@@ -115,13 +116,8 @@ const Features = () => (
         </p>
       </div>
 
-      <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]">
-        <BentoCard
-          src="videos/feature-2.mp4"
-          description="Supporting All Your POTS Replacement Needs."
-          isComingSoon
-        />{" "}
-        b
+      <BentoTilt className=" border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]">
+        <IconDisplay />
       </BentoTilt>
 
       <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">

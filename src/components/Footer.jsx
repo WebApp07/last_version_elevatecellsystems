@@ -48,7 +48,7 @@ const Footer = () => {
           href="#privacy-policy"
           className="text-center text-sm font-light hover:underline md:text-right"
         >
-          888-711-7135{" "}
+          Share
         </a>
 
         <a

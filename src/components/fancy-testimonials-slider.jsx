@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaStar } from "react-icons/fa";
 import AnimatedTitle from "./AnimatedTitle";
-import testimonialData from "../assets/constants/testimonialData";
+import testimonialData from "../constants/testimonialData";
 
 const TestimonialItem = ({ name, position, image, rating, text }) => {
   return (
