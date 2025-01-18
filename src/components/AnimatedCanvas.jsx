@@ -47,7 +47,7 @@ const AnimatedCanvas = () => {
       scrollTrigger: {
         scrub: 0.5,
         pin: canvas,
-        end: "400%",
+        end: "500%",
       },
       onUpdate: render,
     });
