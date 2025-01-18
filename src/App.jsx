@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import FAQ from "./components/Faq";
 import TestimonialsSection from "./components/fancy-testimonials-slider";
 import AnimatedCanvas from "./components/AnimatedCanvas";
+import ContactSection from "./components/GetInTouch";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Story />
       <FAQ />
       <Contact />
+      <ContactSection />
       <Footer />
     </main>
   );
