@@ -6,17 +6,19 @@ import { TiLocationArrow } from "react-icons/ti";
 
 import Button from "./Button";
 
-const navItems = ["Solutions", "Customers", "About", "Partners", "Contact"];
+const navItems = [
+  "Documents",
+  "Solutions",
+  "Customers",
+  "About",
+  "Partners",
+  "Contact",
+];
 
 const NavBar = () => {
   // State for toggling audio and visual indicator
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [isIndicatorActive, setIsIndicatorActive] = useState(false);
-  const [showIframe, setShowIframe] = useState(false);
-
-  const handleButtonClick = () => {
-    setShowIframe(true); // Show the iframe when the button is clicked
-  };
 
   // Refs for audio and navigation container
   const audioElementRef = useRef(null);
@@ -88,21 +90,6 @@ const NavBar = () => {
               rightIcon={<TiLocationArrow />}
               containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
             />
-
-            {/* Conditionally Render Iframe */}
-            {showIframe && (
-              <iframe
-                id="product-iframe"
-                title="Placeholder Iframe"
-                src="" // Placeholder URL
-                className="w-full h-96 mt-4 border border-gray-300"
-                style={{
-                  border: "none",
-                }}
-              >
-                Your browser does not support iframes.
-              </iframe>
-            )}
           </div>
 
           {/* Navigation Links and Audio Button */}

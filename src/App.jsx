@@ -7,7 +7,6 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import FAQ from "./components/Faq";
 import TestimonialsSection from "./components/fancy-testimonials-slider";
-import AnimatedCanvas from "./components/AnimatedCanvas";
 import ContactSection from "./components/GetInTouch";
 
 function App() {
@@ -17,7 +16,6 @@ function App() {
       <Hero />
       <TestimonialsSection />
       <About />
-      <AnimatedCanvas />
       <Features />
       <Story />
       <FAQ />

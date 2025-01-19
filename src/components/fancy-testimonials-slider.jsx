@@ -13,7 +13,7 @@ const TestimonialItem = ({ name, position, image, rating, text }) => {
       whileHover={{ scale: 1.02 }}
       className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
     >
-      <div className="flex items-center mb-4">
+      <div id="customers" className="flex items-center mb-4">
         <img
           src={image}
           alt={name}

@@ -1,6 +1,6 @@
 export default function ContactForm() {
   return (
-    <div className="bg-blue-900 text-white py-16 px-8">
+    <div id="contact" className="bg-blue-900 text-white py-16 px-8">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         {/* Left Section - Form */}
         <div>
