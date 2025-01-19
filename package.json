@@ -1,6 +1,7 @@
 {
-  "name": "awwwards-website",
+  "name": "elevatecellsystems",
   "private": true,
+  "author": "WebApp07",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
