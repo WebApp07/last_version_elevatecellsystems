@@ -24,6 +24,8 @@ const NavBar = () => {
   const handleIframeToggle = (item) => {
     if (item === "Documents") {
       setShowIframe(true); // Show iframe when 'Documents' is clicked
+    } else {
+      setShowIframe(false); // Hide iframe for other items
     }
   };
 
@@ -43,6 +45,14 @@ const NavBar = () => {
   const toggleAudioIndicator = () => {
     setIsAudioPlaying((prev) => !prev);
     setIsIndicatorActive((prev) => !prev);
+  };
+
+  const handleScroll = (item) => {
+    // Smooth scroll to the section
+    document.getElementById(`${item.toLowerCase()}`).scrollIntoView({
+      behavior: "smooth",
+      block: "start", // Align the section to the top
+    });
   };
 
   // Manage audio playback
@@ -114,6 +124,7 @@ const NavBar = () => {
                   onClick={(e) => {
                     e.preventDefault(); // Prevent default anchor behavior
                     handleIframeToggle(item); // Handle the iframe toggle on click
+                    handleScroll(item); // Scroll to the section
                   }}
                 >
                   {item}
@@ -135,7 +146,7 @@ const NavBar = () => {
 
                   {/* Iframe */}
                   <iframe
-                    src="https://www.kingsiii.com/ccpa/" // Replace with your document URL
+                    src="https://www.kingsiii.com/ccpa/" // Replace with your document URL here you can make your page sir.
                     title="Documents"
                     className="w-full h-full rounded-lg"
                   />
