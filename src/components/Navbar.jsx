@@ -19,6 +19,17 @@ const NavBar = () => {
   // State for toggling audio and visual indicator
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [isIndicatorActive, setIsIndicatorActive] = useState(false);
+  const [showIframe, setShowIframe] = useState(false); // State to control iframe visibility
+
+  const handleIframeToggle = (item) => {
+    if (item === "Documents") {
+      setShowIframe(true); // Show iframe when 'Documents' is clicked
+    }
+  };
+
+  const handleCloseIframe = () => {
+    setShowIframe(false); // Close iframe when 'Close' button is clicked
+  };
 
   // Refs for audio and navigation container
   const audioElementRef = useRef(null);
@@ -100,11 +111,37 @@ const NavBar = () => {
                   key={index}
                   href={`#${item.toLowerCase()}`}
                   className="nav-hover-btn"
+                  onClick={(e) => {
+                    e.preventDefault(); // Prevent default anchor behavior
+                    handleIframeToggle(item); // Handle the iframe toggle on click
+                  }}
                 >
                   {item}
                 </a>
               ))}
             </div>
+
+            {/* Iframe Modal for Documents */}
+            {showIframe && (
+              <div className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center max-width h-screen">
+                <div className="relative w-full h-full flex items-center justify-center">
+                  {/* Close Button */}
+                  <button
+                    onClick={handleCloseIframe}
+                    className="absolute top-4 right-4 bg-red-500 text-white px-3 py-2 rounded-full"
+                  >
+                    Close
+                  </button>
+
+                  {/* Iframe */}
+                  <iframe
+                    src="https://www.kingsiii.com/ccpa/" // Replace with your document URL
+                    title="Documents"
+                    className="w-full h-full rounded-lg"
+                  />
+                </div>
+              </div>
+            )}
 
             <button
               onClick={toggleAudioIndicator}
