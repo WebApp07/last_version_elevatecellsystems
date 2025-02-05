@@ -82,7 +82,7 @@ export default function ContactForm() {
             </p>
             <p className="flex items-center text-lg">
               <span className="mr-3">✉️</span>
-              michael.mitc@example.com
+              admin@mail.com
             </p>
           </div>
           <div>
